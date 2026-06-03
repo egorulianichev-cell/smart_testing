@@ -1,0 +1,15 @@
+---
+name: flask smarter tests
+discover: find ./tests -type f -name 'test_*.py'
+run: pytest --disable-pytest-warnings --no-header --quiet --tb=short --junit-xml="<< outputs.junit >>" << test.atoms >>
+analysis: pytest --disable-pytest-warnings --no-header --quiet --tb=short --cov=app --cov-context=test --circleci-coverage=<< outputs.circleci-coverage >> << test.atoms >>
+outputs:
+  junit: test-reports/tests.xml
+  circleci-coverage: test-reports/circleci-coverage.json
+options:
+  test-impact-analysis: true
+  dynamic-test-splitting: true
+  max-auto-rerun: 1
+  full-test-run-paths:
+    - requirements.txt
+    - .circleci/*.yml
