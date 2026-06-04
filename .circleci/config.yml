@@ -15,7 +15,7 @@ jobs:
             pip install git+https://github.com/circleci/pytest-circleci-coverage.git
       - run:
           name: Run smarter tests
-          command: circleci run testsuite "flask smarter tests" --verbose --analyze-tests=none
+          command: circleci run testsuite "flask smarter tests" --verbose
       - store_test_results:
           path: test-reports
       - store_artifacts:
