@@ -7,10 +7,10 @@ app = Flask(__name__)
 def home():
     return "OK", 200
 
-@app.route("/feature"
+@app.route("/feature")
 def new_feature():
     return "New Feature", 200
-           )
+           
 @app.route("/about")
 def about():
     return "about", 200
