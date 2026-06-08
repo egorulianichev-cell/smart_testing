@@ -16,7 +16,7 @@ jobs:
       - run:
           name: Run smarter tests
           command: |
-            mkdir -p test-results
+            mkdir -p test-reports
             circleci run testsuite "flask smarter tests" --verbose --analyze-tests=none
       - store_test_results:
           path: test-reports
