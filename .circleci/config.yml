@@ -4,7 +4,7 @@ jobs:
   test:
     docker:
       - image: cimg/python:3.12
-    parallelism: 6
+    parallelism: 3
     steps:
       - checkout
       - run:
@@ -15,7 +15,9 @@ jobs:
             pip install git+https://github.com/circleci/pytest-circleci-coverage.git
       - run:
           name: Run smarter tests
-          command: circleci run testsuite "flask smarter tests" --verbose --analyze-tests=none
+          command: |
+            mkdir -p test-results
+            circleci run testsuite "flask smarter tests" --verbose --analyze-tests=none
       - store_test_results:
           path: test-reports
       - store_artifacts:
